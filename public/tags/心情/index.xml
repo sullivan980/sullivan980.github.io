@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>心情 on Sullivan&#39;s blog</title>
+    <link>http://localhost:1313/tags/%E5%BF%83%E6%83%85/</link>
+    <description>Recent content in 心情 on Sullivan&#39;s blog</description>
+    <image>
+      <title>Sullivan&#39;s blog</title>
+      <url>http://localhost:1313/img/site-feature-image.jpg</url>
+      <link>http://localhost:1313/img/site-feature-image.jpg</link>
+    </image>
+    <generator>Hugo -- 0.147.4</generator>
+    <language>zh</language>
+    <copyright>2025 Sullivan</copyright>
+    <lastBuildDate>Tue, 19 Mar 2024 15:04:05 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/%E5%BF%83%E6%83%85/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>第一条说说</title>
+      <link>http://localhost:1313/talks/first-talk/</link>
+      <pubDate>Tue, 19 Mar 2024 15:04:05 +0800</pubDate>
+      <guid>http://localhost:1313/talks/first-talk/</guid>
+      <description>&lt;p&gt;今天是个好天气，阳光明媚。开始使用我的新博客记录生活了，希望能坚持下去！☀️&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

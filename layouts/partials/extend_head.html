@@ -1,0 +1,240 @@
+<!-- KaTeX -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false}
+            ],
+            throwOnError : false
+        });
+    });
+</script>
+
+<!-- Mermaid -->
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>
+    mermaid.initialize({
+        startOnLoad: true,
+        theme: 'dark'
+    });
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        document.querySelectorAll('pre code.language-mermaid').forEach(function(element) {
+            let pre = element.parentElement;
+            pre.classList.add('mermaid');
+            pre.innerHTML = element.innerHTML;
+        });
+    });
+</script>
+
+<!-- Custom styles can be added here -->
+
+<!-- Custom Styles -->
+<style>
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: calc(var(--nav-width) + var(--gap) * 2);
+    margin-inline-start: auto;
+    margin-inline-end: auto;
+    line-height: var(--header-height);
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+.logo img {
+    height: 45px;
+    width: auto;
+    transform-origin: center;
+}
+
+/* 移动端适配 */
+@media screen and (max-width: 768px) {
+    .nav {
+        padding: 15px 20px;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .logo-container {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logo img {
+        height: 45px;
+    }
+
+    #menu {
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    #menu li {
+        margin: 0;
+    }
+
+    #menu li a {
+        padding: 8px 12px;
+        font-size: 18px;
+        display: inline-block;
+    }
+
+    #theme-toggle {
+        margin-left: 0;
+    }
+
+    #theme-toggle svg {
+        height: 28px;
+        width: 28px;
+    }
+}
+
+/* 更小屏幕的适配 */
+@media screen and (max-width: 480px) {
+    .nav {
+        padding: 12px 15px;
+        gap: 12px;
+    }
+
+    .logo img {
+        height: 40px;
+    }
+
+    #menu {
+        gap: 13px;
+    }
+
+    #menu li a {
+        padding: 6px 10px;
+        font-size: 16px;
+    }
+
+    #theme-toggle svg {
+        height: 26px;
+        width: 26px;
+    }
+}
+
+/* 确保菜单在移动端水平居中 */
+#menu {
+    display: flex;
+    align-items: center;
+    list-style: none;
+}
+
+@media screen and (max-width: 768px) {
+    #menu {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+.logo:hover img {
+    animation: shake 2.5s ease-in-out;
+}
+
+#theme-toggle {
+    padding: 0;
+    margin: 0;
+    margin-left: 6px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: var(--content);
+    display: flex;
+    align-items: center;
+}
+
+#theme-toggle svg {
+    height: 28px;
+    width: 28px;
+    margin: 0;
+}
+
+@keyframes shake {
+    0%, 100% { transform: rotate(0deg); }
+    5% { transform: rotate(-5deg); }
+    15% { transform: rotate(4deg); }
+    25% { transform: rotate(-4deg); }
+    35% { transform: rotate(3deg); }
+    45% { transform: rotate(-3deg); }
+    55% { transform: rotate(2deg); }
+    65% { transform: rotate(-2deg); }
+    75% { transform: rotate(1deg); }
+    85% { transform: rotate(-1deg); }
+    95% { transform: rotate(0deg); }
+}
+
+/* Dark mode support */
+:root {
+    --gh-border-color: #30363d;
+    --gh-bg: #0d1117;
+    --gh-text: #c9d1d9;
+    --gh-link: #58a6ff;
+}
+
+[theme="dark"] .post-content {
+    color: var(--gh-text);
+}
+
+[theme="dark"] .project-card {
+    background: var(--gh-bg);
+    border-color: var(--gh-border-color);
+}
+
+[theme="dark"] .project-card h3 a {
+    color: var(--gh-link);
+}
+
+[theme="dark"] .activity-icon {
+    background: var(--gh-bg);
+    border-color: var(--gh-border-color);
+}
+
+[theme="dark"] .stats-section {
+    border-color: var(--gh-border-color);
+}
+
+/* Custom scrollbar for dark mode */
+[theme="dark"] ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+[theme="dark"] ::-webkit-scrollbar-thumb {
+    background: #484f58;
+    border-radius: 10px;
+}
+
+[theme="dark"] ::-webkit-scrollbar-track {
+    background: #0d1117;
+}
+</style>
+
+{{- /* Head custom content area start */ -}}
+{{- /* Insert any custom code (web-analytics, resources, etc.) - it will appear in the <head></head> section of every page. */ -}}
+<link rel="icon" href="{{ .Site.Params.favicon }}" type="image/svg+xml">
+{{- /* Head custom content area end */ -}}

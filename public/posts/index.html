@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="zh" dir="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>文章 | Sullivan&#39;s blog</title>
+<meta name="keywords" content="">
+<meta name="description" content="文章 - Sullivan&#39;s blog">
+<meta name="author" content="Sullivan">
+<link rel="canonical" href="http://localhost:1313/posts/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.css" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/img/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/img/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/img/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/img/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/posts/index.xml">
+<link rel="alternate" hreflang="zh" href="http://localhost:1313/posts/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false}
+            ],
+            throwOnError : false
+        });
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>
+    mermaid.initialize({
+        startOnLoad: true,
+        theme: 'dark'
+    });
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        document.querySelectorAll('pre code.language-mermaid').forEach(function(element) {
+            let pre = element.parentElement;
+            pre.classList.add('mermaid');
+            pre.innerHTML = element.innerHTML;
+        });
+    });
+</script>
+
+
+
+
+<style>
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: calc(var(--nav-width) + var(--gap) * 2);
+    margin-inline-start: auto;
+    margin-inline-end: auto;
+    line-height: var(--header-height);
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+.logo img {
+    height: 45px;
+    width: auto;
+    transform-origin: center;
+}
+
+ 
+@media screen and (max-width: 768px) {
+    .nav {
+        padding: 15px 20px;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .logo-container {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logo img {
+        height: 45px;
+    }
+
+    #menu {
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    #menu li {
+        margin: 0;
+    }
+
+    #menu li a {
+        padding: 8px 12px;
+        font-size: 18px;
+        display: inline-block;
+    }
+
+    #theme-toggle {
+        margin-left: 0;
+    }
+
+    #theme-toggle svg {
+        height: 28px;
+        width: 28px;
+    }
+}
+
+ 
+@media screen and (max-width: 480px) {
+    .nav {
+        padding: 12px 15px;
+        gap: 12px;
+    }
+
+    .logo img {
+        height: 40px;
+    }
+
+    #menu {
+        gap: 13px;
+    }
+
+    #menu li a {
+        padding: 6px 10px;
+        font-size: 16px;
+    }
+
+    #theme-toggle svg {
+        height: 26px;
+        width: 26px;
+    }
+}
+
+ 
+#menu {
+    display: flex;
+    align-items: center;
+    list-style: none;
+}
+
+@media screen and (max-width: 768px) {
+    #menu {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+.logo:hover img {
+    animation: shake 2.5s ease-in-out;
+}
+
+#theme-toggle {
+    padding: 0;
+    margin: 0;
+    margin-left: 6px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: var(--content);
+    display: flex;
+    align-items: center;
+}
+
+#theme-toggle svg {
+    height: 28px;
+    width: 28px;
+    margin: 0;
+}
+
+@keyframes shake {
+    0%, 100% { transform: rotate(0deg); }
+    5% { transform: rotate(-5deg); }
+    15% { transform: rotate(4deg); }
+    25% { transform: rotate(-4deg); }
+    35% { transform: rotate(3deg); }
+    45% { transform: rotate(-3deg); }
+    55% { transform: rotate(2deg); }
+    65% { transform: rotate(-2deg); }
+    75% { transform: rotate(1deg); }
+    85% { transform: rotate(-1deg); }
+    95% { transform: rotate(0deg); }
+}
+
+ 
+:root {
+    --gh-border-color: #30363d;
+    --gh-bg: #0d1117;
+    --gh-text: #c9d1d9;
+    --gh-link: #58a6ff;
+}
+
+[theme="dark"] .post-content {
+    color: var(--gh-text);
+}
+
+[theme="dark"] .project-card {
+    background: var(--gh-bg);
+    border-color: var(--gh-border-color);
+}
+
+[theme="dark"] .project-card h3 a {
+    color: var(--gh-link);
+}
+
+[theme="dark"] .activity-icon {
+    background: var(--gh-bg);
+    border-color: var(--gh-border-color);
+}
+
+[theme="dark"] .stats-section {
+    border-color: var(--gh-border-color);
+}
+
+ 
+[theme="dark"] ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+[theme="dark"] ::-webkit-scrollbar-thumb {
+    background: #484f58;
+    border-radius: 10px;
+}
+
+[theme="dark"] ::-webkit-scrollbar-track {
+    background: #0d1117;
+}
+</style><link rel="icon" href="/img/favicon.svg" type="image/svg+xml"><meta property="og:url" content="http://localhost:1313/posts/">
+  <meta property="og:site_name" content="Sullivan&#39;s blog">
+  <meta property="og:title" content="文章">
+  <meta property="og:description" content="Sullivan 的个人博客，分享技术文章和生活感悟">
+  <meta property="og:locale" content="zh">
+  <meta property="og:type" content="website">
+      <meta property="og:image" content="http://localhost:1313/img/site-feature-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://localhost:1313/img/site-feature-image.jpg">
+<meta name="twitter:title" content="文章">
+<meta name="twitter:description" content="Sullivan 的个人博客，分享技术文章和生活感悟">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "文章",
+      "item": "http://localhost:1313/posts/"
+    }
+  ]
+}
+</script>
+</head>
+
+<body class="list" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark');
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo-container">
+            <a href="http://localhost:1313/" accesskey="h" title="Sullivan&#39;s blog (Alt + H)" class="logo">
+                <img src="/img/logo.svg" alt="Sullivan&#39;s blog">
+            </a>
+            <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+                <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+            </button>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/search" title="搜索">
+                    <span>搜索</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/archives" title="归档">
+                    <span>归档</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/posts" title="文章">
+                    <span>文章</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/tags" title="标签">
+                    <span>标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/talks" title="随吐">
+                    <span>随吐</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header> <main class="main"> 
+<header class="page-header"><div class="breadcrumbs"><a href="http://localhost:1313/">主页</a></div>
+  <h1>
+    文章
+    <a href="/posts/index.xml" title="RSS" aria-label="RSS">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" height="23">
+        <path d="M4 11a9 9 0 0 1 9 9" />
+        <path d="M4 4a16 16 0 0 1 16 16" />
+        <circle cx="5" cy="19" r="1" />
+      </svg>
+    </a>
+  </h1>
+</header>
+
+
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">MySQL 性能优化实践指南
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>MySQL 性能优化指南 MySQL 作为最流行的关系型数据库之一，其性能优化是一个永恒的话题。本文将从多个角度详细讨论 MySQL 的优化策略。
+1. 索引优化 索引设计原则 最左前缀原则 选择性高的列优先 避免过多索引 考虑查询场景 1 2 3 4 5 -- 创建复合索引 CREATE INDEX idx_user_name_age ON users(name, age); -- 使用索引的查询 SELECT * FROM users WHERE name = &#39;John&#39; AND age &gt; 20; 常见索引问题 索引失效场景 索引选择性 索引维护成本 2. 查询优化 SQL 优化技巧 1 2 3 4 5 -- 避免 SELECT * SELECT id, name, age FROM users WHERE age &gt; 20; -- 使用 EXPLAIN 分析查询 EXPLAIN SELECT * FROM users WHERE age &gt; 20; 常见优化方案 避免全表扫描 使用覆盖索引 优化 JOIN 查询 合理使用子查询 3. 配置优化 关键参数调优 1 2 3 4 5 6 7 8 # 缓冲池大小 innodb_buffer_pool_size = 4G # 最大连接数 max_connections = 1000 # 查询缓存大小 query_cache_size = 64M 4. 性能监控 关键指标 QPS（每秒查询数） TPS（每秒事务数） 慢查询数量 缓存命中率 监控工具 MySQL Slow Query Log Performance Schema MySQL Enterprise Monitor 5. 分区和分表 分区策略 1 2 3 4 5 6 7 8 9 10 11 -- 按范围分区 CREATE TABLE sales ( id INT, amount DECIMAL, sale_date DATE ) PARTITION BY RANGE (YEAR(sale_date)) ( PARTITION p0 VALUES LESS THAN (2023), PARTITION p1 VALUES LESS THAN (2024), PARTITION p2 VALUES LESS THAN MAXVALUE ); 6. 备份和恢复 定期备份策略 备份验证 恢复演练 最佳实践总结 定期检查和优化索引 监控慢查询并优化 根据业务场景调整配置 建立性能基准 实施监控告警 进阶主题 读写分离 主从复制 高可用方案 分布式数据库 </p>
+  </div>
+  <footer class="entry-footer"><span title='2024-03-23 16:30:00 +0800 CST'>2024-03-23</span>&nbsp;·&nbsp;1 分钟&nbsp;·&nbsp;197 字&nbsp;·&nbsp;Sullivan</footer>
+  <a class="entry-link" aria-label="post link to MySQL 性能优化实践指南" href="http://localhost:1313/posts/mysql-optimization/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Vue3 Composition API 实战指南
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Vue3 Composition API 介绍 Composition API 是 Vue3 中最重要的特性之一，它提供了一种更灵活的方式来组织组件逻辑。本文将详细介绍其使用方法和实践经验。
+1. 基础概念 响应式系统 1 2 3 4 5 6 7 8 9 10 import { ref, reactive } from &#39;vue&#39; // 使用 ref 定义原始类型 const count = ref(0) // 使用 reactive 定义对象 const state = reactive({ name: &#39;Vue3&#39;, version: &#39;3.0&#39; }) 生命周期钩子 1 2 3 4 5 6 7 8 9 10 11 12 13 import { onMounted, onUnmounted } from &#39;vue&#39; export default { setup() { onMounted(() =&gt; { console.log(&#39;组件已挂载&#39;) }) onUnmounted(() =&gt; { console.log(&#39;组件已卸载&#39;) }) } } 2. 组合式函数 创建可复用的逻辑：
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2024-03-22 10:30:00 +0800 CST'>2024-03-22</span>&nbsp;·&nbsp;2 分钟&nbsp;·&nbsp;240 字&nbsp;·&nbsp;Sullivan</footer>
+  <a class="entry-link" aria-label="post link to Vue3 Composition API 实战指南" href="http://localhost:1313/posts/vue3-composition-api/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Hugo Admonitions 提示框展示
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>基础提示框 笔记 这是一个基础提示框，用于展示一般性的提示信息。
+提示 这是一个提示框，用于展示有用的技巧和建议。
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2024-03-21 15:30:00 +0800 CST'>2024-03-21</span>&nbsp;·&nbsp;1 分钟&nbsp;·&nbsp;34 字&nbsp;·&nbsp;Sullivan</footer>
+  <a class="entry-link" aria-label="post link to Hugo Admonitions 提示框展示" href="http://localhost:1313/posts/admonitions-demo/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Java 开发最佳实践总结
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Java 开发最佳实践 在 Java 开发中，遵循最佳实践可以帮助我们写出更好的代码。本文将从多个角度探讨 Java 开发中的重要实践。
+1. 代码规范 命名规范 类名使用 PascalCase 方法名和变量名使用 camelCase 常量使用 UPPER_SNAKE_CASE 包名全部小写 1 2 3 4 5 6 7 public class UserService { private static final int MAX_RETRY_COUNT = 3; public void processUserData(String userData) { // 处理逻辑 } } 注释规范 类级别注释说明用途 方法注释说明功能、参数和返回值 关键代码段添加必要的注释 2. 异常处理 使用具体的异常类而不是通用异常 合理使用 try-with-resources 不要忽略异常 1 2 3 4 5 6 try (FileInputStream fis = new FileInputStream(file)) { // 处理文件 } catch (IOException e) { logger.error(&#34;文件处理失败&#34;, e); throw new BusinessException(&#34;文件处理失败&#34;); } 3. 性能优化 使用 StringBuilder 而不是 String 连接 合理使用集合类 避免创建不必要的对象 4. 设计模式应用 单例模式：确保全局唯一实例 工厂模式：解耦对象创建 策略模式：封装算法族 5. 并发编程 正确使用同步机制 避免死锁 使用线程池而不是直接创建线程 1 2 3 4 ExecutorService executor = Executors.newFixedThreadPool(10); executor.submit(() -&gt; { // 任务处理 }); 6. 测试实践 编写单元测试 使用测试框架（JUnit, Mockito） 注重测试覆盖率 总结 良好的开发实践可以：
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2024-03-21 14:30:00 +0800 CST'>2024-03-21</span>&nbsp;·&nbsp;1 分钟&nbsp;·&nbsp;127 字&nbsp;·&nbsp;Sullivan</footer>
+  <a class="entry-link" aria-label="post link to Java 开发最佳实践总结" href="http://localhost:1313/posts/java-best-practices/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Hello World
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>欢迎来到我的博客 这是我使用 Hugo 搭建的个人博客的第一篇文章。Hugo 是一个非常快速的静态网站生成器，它使用 Go 语言编写，具有以下特点：
+极快的构建速度 强大的主题系统 丰富的扩展功能 活跃的社区支持 为什么选择 Hugo？ 速度快：Hugo 是目前最快的静态网站生成器之一 易于使用：配置简单，文档齐全 灵活性：支持多种内容格式和自定义 主题丰富：有大量优秀的主题可供选择 后续计划 定期更新技术文章 分享学习心得 记录生活感悟 持续优化博客功能 1 2 3 func main() { fmt.Println(&#34;Hello, Hugo!&#34;) } </p>
+  </div>
+  <footer class="entry-footer"><span title='2024-03-20 09:30:00 +0800 CST'>2024-03-20</span>&nbsp;·&nbsp;1 分钟&nbsp;·&nbsp;32 字&nbsp;·&nbsp;Sullivan</footer>
+  <a class="entry-link" aria-label="post link to Hello World" href="http://localhost:1313/posts/hello-world/"></a>
+</article>
+<footer class="page-footer">
+  <nav class="pagination">
+    <a class="next" href="http://localhost:1313/posts/page/2/">下一页&nbsp;&nbsp;»
+    </a>
+  </nav>
+</footer>
+    </main>
+    
+<footer class="footer">
+        <span>© 2025 Sullivan</span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Sullivan&#39;s blog</title>
+    <link>http://localhost:1313/</link>
+    <description>Recent content on Sullivan&#39;s blog</description>
+    <image>
+      <title>Sullivan&#39;s blog</title>
+      <url>http://localhost:1313/img/site-feature-image.jpg</url>
+      <link>http://localhost:1313/img/site-feature-image.jpg</link>
+    </image>
+    <generator>Hugo -- 0.147.4</generator>
+    <language>zh</language>
+    <copyright>2025 Sullivan</copyright>
+    <lastBuildDate>Sat, 23 Mar 2024 16:30:00 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Markdown 和 Hugo 功能展示</title>
+      <link>http://localhost:1313/posts/markdown-showcase/</link>
+      <pubDate>Wed, 20 Mar 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/markdown-showcase/</guid>
+      <description>这篇文章展示了 Markdown 的各种语法特性和 Hugo 的功能</description>
+    </item>
+    <item>
+      <title>MySQL 性能优化实践指南</title>
+      <link>http://localhost:1313/posts/mysql-optimization/</link>
+      <pubDate>Sat, 23 Mar 2024 16:30:00 +0800</pubDate>
+      <guid>http://localhost:1313/posts/mysql-optimization/</guid>
+      <description>深入探讨 MySQL 性能优化的各个方面，包括索引优化、查询优化和配置调优</description>
+    </item>
+    <item>
+      <title>Vue3 Composition API 实战指南</title>
+      <link>http://localhost:1313/posts/vue3-composition-api/</link>
+      <pubDate>Fri, 22 Mar 2024 10:30:00 +0800</pubDate>
+      <guid>http://localhost:1313/posts/vue3-composition-api/</guid>
+      <description>详细介绍 Vue3 Composition API 的使用方法和最佳实践</description>
+    </item>
+    <item>
+      <title>Hugo Admonitions 提示框展示</title>
+      <link>http://localhost:1313/posts/admonitions-demo/</link>
+      <pubDate>Thu, 21 Mar 2024 15:30:00 +0800</pubDate>
+      <guid>http://localhost:1313/posts/admonitions-demo/</guid>
+      <description>展示 Hugo 提示框的使用方法和效果</description>
+    </item>
+    <item>
+      <title>Java 开发最佳实践总结</title>
+      <link>http://localhost:1313/posts/java-best-practices/</link>
+      <pubDate>Thu, 21 Mar 2024 14:30:00 +0800</pubDate>
+      <guid>http://localhost:1313/posts/java-best-practices/</guid>
+      <description>总结 Java 开发中的关键最佳实践，包括代码规范、性能优化和设计模式</description>
+    </item>
+    <item>
+      <title>Hello World</title>
+      <link>http://localhost:1313/posts/hello-world/</link>
+      <pubDate>Wed, 20 Mar 2024 09:30:00 +0800</pubDate>
+      <guid>http://localhost:1313/posts/hello-world/</guid>
+      <description>我的第一篇博客文章</description>
+    </item>
+    <item>
+      <title>Spring Boot 最佳实践总结</title>
+      <link>http://localhost:1313/posts/spring-boot-best-practices/</link>
+      <pubDate>Wed, 20 Mar 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/spring-boot-best-practices/</guid>
+      <description>总结 Spring Boot 开发中的一些最佳实践和经验</description>
+    </item>
+    <item>
+      <title>第一条说说</title>
+      <link>http://localhost:1313/talks/first-talk/</link>
+      <pubDate>Tue, 19 Mar 2024 15:04:05 +0800</pubDate>
+      <guid>http://localhost:1313/talks/first-talk/</guid>
+      <description>&lt;p&gt;今天是个好天气，阳光明媚。开始使用我的新博客记录生活了，希望能坚持下去！☀️&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

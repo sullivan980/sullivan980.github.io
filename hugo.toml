@@ -1,0 +1,317 @@
+# 基本配置
+baseURL = "https://sullivan980.github.io/"
+title = "Sullivan's blog"
+theme = "PaperMod"
+defaultContentLanguage = "zh"  # 默认语言
+min_version = "0.146.0"        # Hugo 最低版本要求
+
+# 站点信息
+copyright = "© 2025 Sullivan"  # 版权信息
+license = "MIT"               # 许可证类型
+licenselink = "https://github.com/sullivan980/sullivan-blog/blob/master/LICENSE"  # 许可证链接
+description = "A fast, clean, responsive Hugo blog"  # 站点描述
+homepage = "https://sullivan-blog.com"              # 站点主页
+demosite = ""                                       # 演示站点
+
+# 主题标签
+tags = [
+  "responsive",     # 响应式设计
+  "simple",         # 简约设计
+  "clean",          # 简洁风格
+  "light",          # 亮色模式
+  "dark",           # 暗色模式
+  "blog",           # 博客类型
+  "minimalist",     # 极简主义
+  "highlight.js",   # 代码高亮
+  "search"          # 搜索功能
+]
+
+# 主题特性
+features = [
+  "responsive",                 # 响应式布局
+  "single-column",             # 单栏布局
+  "blog",                      # 博客功能
+  "cover-image",              # 封面图片
+  "table-of-contents",        # 文章目录
+  "opengraph",                # Open Graph 协议
+  "highlight.js",             # 代码高亮
+  "favicon",                  # 网站图标
+  "archive",                  # 文章归档
+  "share-icons",              # 分享按钮
+  "cover",                    # 文章封面
+  "multilingual",             # 多语言支持
+  "social-icons",             # 社交图标
+  "minified-assets",          # 资源压缩
+  "theme-toggle",             # 主题切换
+  "menu-location-indicator",  # 菜单位置指示
+  "scroll-to-top",           # 返回顶部
+  "search"                    # 搜索功能
+]
+
+# 作者信息
+[author]
+  name = "Sullivan"                                 # 作者名称
+  homepage = "https://github.com/sullivan980/"      # 作者主页
+
+# 分页配置
+[pagination]
+pagerSize = 5  # 每页显示的文章数量
+
+# 功能开关
+enableRobotsTXT = true    # 启用 robots.txt
+buildDrafts = false       # 是否构建草稿
+buildFuture = false       # 是否构建未来日期的文章
+buildExpired = false      # 是否构建过期的文章
+enableEmoji = true        # 启用 emoji 表情支持
+enableGitInfo = true      # 启用 Git 信息
+
+# 搜索功能配置
+[outputs]
+home = ["HTML", "RSS", "JSON"]  # 启用 JSON 输出，用于搜索功能
+
+# 代码高亮设置
+[markup]
+  [markup.highlight]
+    noClasses = false
+    lineNos = true              # 显示行号
+    style = "monokai"           # 高亮主题风格
+  
+  # Markdown 渲染器配置
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+# 主要参数配置
+[params]
+  env = "production"                # 环境设置
+  title = "Sullivan's Blog"         # 网站标题
+  description = "Sullivan 的个人博客，分享技术文章和生活感悟"  # 网站描述
+  keywords = ["博客", "技术", "生活", "Sullivan"]  # 网站关键词
+  author = "Sullivan"               # 作者名
+  images = ["img/site-feature-image.jpg"]  # 默认社交媒体分享图片
+  DateFormat = "2006-01-02"        # 日期格式
+  defaultTheme = "auto"            # 默认主题 (auto, light, dark)
+  
+  # 网站图标设置
+  favicon = "/img/favicon.svg"
+  
+  # 文章排序设置
+  orderByPublishDate = true        # 按发布日期排序
+  enableGitInfo = false            # 禁用 Git 信息，使用文章中的 date 字段
+  
+  # 功能开关
+  disableThemeToggle = false        # 是否禁用主题切换按钮
+  ShowReadingTime = true            # 显示阅读时间
+  ShowShareButtons = true           # 显示分享按钮
+  ShowPostNavLinks = true           # 显示文章导航链接
+  ShowBreadCrumbs = true            # 显示面包屑导航
+  ShowCodeCopyButtons = true        # 显示代码复制按钮
+  ShowWordCount = true             # 显示字数统计
+  ShowRssButtonInSectionTermList = true  # 在分类列表中显示 RSS 按钮
+  UseHugoToc = true                # 使用 Hugo 内置的目录功能
+  disableSpecial1stPost = false    # 是否禁用第一篇文章的特殊样式
+  disableScrollToTop = false       # 是否禁用返回顶部按钮
+  comments = false                 # 是否启用评论
+  hidemeta = false                # 是否隐藏元信息
+  hideSummary = false            # 是否隐藏摘要
+  showtoc = true                 # 是否显示目录
+  tocopen = false               # 目录默认是否展开
+
+  # 主页信息设置
+  [params.homeInfoParams]
+    Title = "Hi there 👋"
+    Content = """
+    欢迎来到我的博客！这里主要分享:
+
+    - 📚 编程学习笔记
+    - 💡 技术心得体会
+    - 🔧 实用开发工具
+    - ✨ 有趣的想法
+    """
+
+  # 个人资料设置（当前已禁用）
+  [params.profileMode]
+    enabled = false                # 禁用个人资料模式
+    # title = "Sullivan's Blog"      # 个人资料标题
+    # subtitle = "分享技术文章和生活感悟"  # 副标题
+    # imageUrl = "https://picsum.photos/200"    # 头像地址
+    # imageTitle = "我的头像"        # 头像标题
+    # imageWidth = 120              # 头像宽度
+    # imageHeight = 120             # 头像高度
+    # buttons = [
+    #   { name = "文章", url = "posts" },
+    #   { name = "标签", url = "tags" }
+    # ]
+
+  # 文章封面设置
+  [params.cover]
+    hidden = false         # 是否隐藏封面
+    hiddenInList = true  # 是否在列表中隐藏封面
+    hiddenInSingle = false # 是否在文章页隐藏封面
+    linkFullImages = true  # 是否链接到完整图片
+    responsiveImages = true # 是否使用响应式图片
+    
+  # 文章列表设置
+  [params.list]
+    showHero = true           # 是否显示 Hero 部分
+    heroStyle = "basic"       # Hero 样式 (basic, big, background)
+    showCover = true         # 是否显示封面图
+    showBreadcrumbs = false   # 是否显示面包屑导航
+    showViews = false        # 是否显示访问量
+    showLikes = false        # 是否显示点赞数
+    showTaxonomies = true    # 是否显示分类信息
+    groupByYear = true       # 是否按年份分组
+    cardView = false         # 使用列表视图而不是卡片视图
+
+  # 社交图标
+  [[params.socialIcons]]
+    name = "github"
+    url = "https://github.com/sullivan980"
+
+  [[params.socialIcons]]
+    name = "email"
+    url = "mailto:your.email@example.com"
+
+  # 编辑链接设置
+  [params.editPost]
+    URL = "https://github.com/sullivan980/sullivan-blog/content"
+    Text = "建议修改"  # 编辑按钮文字
+    appendFilePath = true  # 添加文件路径到 URL
+
+  # 搜索功能配置
+  [params.fuseOpts]
+    isCaseSensitive = false  # 是否区分大小写
+    shouldSort = true        # 是否对结果排序
+    location = 0            # 匹配位置的重要性
+    distance = 1000         # 允许匹配的最大距离
+    threshold = 0.4         # 匹配阈值
+    minMatchCharLength = 0  # 最小匹配字符长度
+    keys = ["title", "permalink", "summary", "content"]  # 搜索范围
+
+  # 分析和统计设置
+  [params.analytics]
+    google = { SiteVerificationTag = "" }  # Google 站点验证标签
+    bing = { SiteVerificationTag = "" }    # Bing 站点验证标签
+    yandex = { SiteVerificationTag = "" }  # Yandex 站点验证标签
+    pinterest = { SiteVerificationTag = "" }  # Pinterest 站点验证标签
+    baidu = { SiteVerificationTag = "" }    # 百度站点验证标签
+
+  # Cookie 同意设置
+  [params.cookieConsent]
+    enable = true        # 启用 Cookie 同意提示
+    message = "此网站使用 cookies 来确保您在我们的网站上获得最佳体验。"
+    dismiss = "同意"
+
+# 归档页面设置
+[params.archives]
+  enable = true
+  showYearCount = true
+  showMonthCount = true
+  showPostCount = true
+  dateFormat = "2006年01月"
+  basePath = "/archives"
+  title = "归档"
+  layout = "archives"
+
+# 资源文件配置
+[params.assets]
+  disableHLJS = false          # 是否禁用 highlight.js
+  disableFingerprinting = true # 是否禁用资源指纹
+  favicon = "img/favicon.ico"
+  favicon16x16 = "img/favicon-16x16.png"
+  favicon32x32 = "img/favicon-32x32.png"
+  apple_touch_icon = "img/apple-touch-icon.png"
+  safari_pinned_tab = "safari-pinned-tab.svg"
+  
+  # 自定义 CSS
+  custom_css = ["css/custom.css"]
+  
+  # 自定义 JS
+  custom_js = ["js/custom.js"]
+
+# 菜单配置
+[[menu.main]]
+  name = "搜索"
+  url = "/search"
+  weight = 10
+
+[[menu.main]]
+  name = "归档"
+  url = "/archives"
+  weight = 20
+
+[[menu.main]]
+  name = "文章"
+  url = "/posts"
+  weight = 30
+
+[[menu.main]]
+  name = "标签"
+  url = "/tags"
+  weight = 40
+
+[[menu.main]]
+  name = "随吐"
+  url = "/talks"
+  weight = 50
+
+# 隐私政策配置
+[privacy]
+  [privacy.x]
+    enableDNT = true
+    simple = true
+
+# SEO 优化
+[sitemap]
+  changefreq = "weekly"
+  filename = "sitemap.xml"
+  priority = 0.5
+
+# RSS 配置
+[services.rss]
+  limit = 10  # RSS feed 中的文章数量
+
+[services]
+  [services.x]
+    disableInlineCSS = true
+
+# 添加 hugo-admonitions 模块
+[module]
+  [[module.imports]]
+    path = "github.com/KKKZOZ/hugo-admonitions"
+  [[module.imports]]
+    path = "PaperMod"
+
+# About page params
+avatar = "/img/avatar.jpg"
+githubUsername = "sullivan980"
+followers = "10"
+following = "20"
+stars = "30"
+contributions = "30"
+
+# Social links
+[[params.social]]
+name = "GitHub"
+icon = "fa-github"
+url = "https://github.com/sullivan980"
+
+[[params.social]]
+name = "Twitter"
+icon = "fa-twitter"
+url = "https://twitter.com/your-twitter-handle"
+
+[[params.social]]
+name = "LinkedIn"
+icon = "fa-linkedin"
+url = "https://linkedin.com/in/your-linkedin-profile"
+
+[[params.social]]
+name = "Email"
+icon = "fa-envelope"
+url = "mailto:your-email@example.com"
+
+[[params.social]]
+name = "WeChat"
+icon = "fa-weixin"
+url = "javascript:void(0);"
