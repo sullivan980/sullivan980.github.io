@@ -24,7 +24,7 @@
             <div class="companies-list">
                 {{ range $index, $exp := . }}
                 <button class="company-tab{{ if eq $index 0 }} active{{ end }}" data-company="company{{ add $index 1 }}">
-                    {{ $exp.company }}
+                    <span>{{ $exp.company }}</span>
                 </button>
                 {{ end }}
                 <div class="highlight-bar"></div>

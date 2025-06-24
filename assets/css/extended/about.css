@@ -346,7 +346,7 @@
     position: relative;
     margin: 10px 0 40px;
     width: 100%;
-    font-size: clamp(26px, 5vw, 32px);
+    font-size: 32px;
     white-space: nowrap;
 }
 
@@ -360,7 +360,18 @@
 }
 
 .numbered-heading::after {
-    display: none;
+    content: "";
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 1px;
+    margin-left: 20px;
+    background: linear-gradient(
+        to right,
+        var(--primary) 30%,
+        var(--tertiary) 100%
+    );
+    opacity: 0.3;
 }
 
 .heading-line {
@@ -427,30 +438,63 @@
 }
 
 .companies-list {
+    display: flex;
+    flex-direction: column;
     position: relative;
     z-index: 3;
     width: max-content;
+    min-width: 160px;
+    max-width: 200px;
     padding: 0;
     margin: 0;
     list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
 }
 
 .company-tab {
-    position: relative;
+    display: flex;
+    align-items: center;
     width: 100%;
     height: 42px;
     padding: 0 20px;
     border: none;
+    border-left: 2px solid var(--border);
     background-color: transparent;
     font-family: var(--font-family);
     font-size: 13px;
     text-align: left;
-    white-space: nowrap;
     cursor: pointer;
     transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.company-tab::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--primary);
+    opacity: 0;
+    transition: opacity 0.25s ease;
+}
+
+.company-tab:hover::before {
+    opacity: 0.05;
+}
+
+.company-tab.active::before {
+    opacity: 0.1;
+}
+
+.company-tab span {
+    position: relative;
+    z-index: 2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
 }
 
 .company-tab:hover {
@@ -458,36 +502,26 @@
 }
 
 .company-tab.active {
-    background-color: var(--code-bg);
     color: var(--primary);
+    border-left: 2px solid var(--primary);
+    font-weight: 500;
 }
 
-[theme="dark"] .company-tab.active {
-    background-color: var(--entry);
-}
-
-.highlight-bar {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 10;
-    width: 2px;
-    height: 42px;
-    border-radius: 4px;
-    background: var(--primary);
-    transform: translateY(calc(0 * 42px));
-    transition: transform 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+[theme="dark"] .company-tab.active::before {
+    opacity: 0.2;
 }
 
 .job-details {
     position: relative;
     width: 100%;
+    height: auto;
+    padding: 10px 5px;
     margin-left: 20px;
 }
 
 .job-content {
     display: none;
-    padding: 10px 5px;
+    animation: fadeIn 0.5s ease-in;
 }
 
 .job-content.active {
@@ -495,7 +529,7 @@
 }
 
 .job-content h3 {
-    margin-bottom: 2px;
+    margin-bottom: 5px;
     font-size: 22px;
     font-weight: 500;
     line-height: 1.3;
@@ -507,52 +541,45 @@
 
 .job-period {
     margin-bottom: 25px;
+    color: var(--secondary);
     font-family: var(--font-family);
     font-size: 13px;
-    opacity: 0.8;
 }
 
 .job-description {
+    position: relative;
     padding: 0;
     margin: 0;
-    list-style: none;
     font-size: 15px;
+    font-weight: 400;
+    line-height: 1.6;
 }
 
 .job-description li {
     position: relative;
     padding-left: 30px;
     margin-bottom: 10px;
-    line-height: 1.6;
+    color: var(--content);
 }
 
 .job-description li::before {
     content: "▹";
     position: absolute;
     left: 0;
-    top: 5px;
-    font-size: 14px;
-    line-height: 12px;
+    color: var(--primary);
 }
 
-/* 添加新的横条样式到公司名称下方 */
-.company-tab::after {
-    content: "";
-    display: block;
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 100%;
-    height: 1px;
-    background-color: var(--border);
-    transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-.company-tab.active::after {
-    background-color: var(--primary);
-}
-
-/* 移动端工作经历样式 */
 @media (max-width: 768px) {
     .work-container {
         display: flex;
@@ -563,65 +590,44 @@
     }
 
     .companies-list {
-        width: 100%;
+        display: flex;
         flex-direction: row;
         overflow-x: auto;
-        overflow-y: hidden;
-        padding: 10px 0;
-        gap: 15px;
-        scrollbar-width: none; /* Firefox */
-        -ms-overflow-style: none; /* IE and Edge */
-        position: relative;
+        width: 100%;
+        min-width: unset;
+        max-width: unset;
+        margin-bottom: 30px;
+        padding-bottom: 15px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
     }
 
     .companies-list::-webkit-scrollbar {
-        display: none; /* Chrome, Safari, Opera */
+        display: none;
     }
 
     .company-tab {
-        min-width: auto;
-        width: auto;
-        height: 40px;
+        min-width: 150px;
+        max-width: 200px;
         padding: 0 15px;
-        white-space: nowrap;
-        margin-bottom: -2px;
-        font-size: 14px;
+        border-left: none;
+        border-bottom: 2px solid var(--border);
+        text-align: center;
+    }
+
+    .company-tab span {
+        text-align: center;
+        margin: 0 auto;
     }
 
     .company-tab.active {
-        background-color: var(--border);
-    }
-
-    .highlight-bar {
-        display: none;
+        border-left: none;
+        border-bottom: 2px solid var(--primary);
     }
 
     .job-details {
         margin-left: 0;
-        padding: 0 15px;
-    }
-
-    .job-content {
-        padding: 20px 0;
-    }
-
-    .job-content h3 {
-        font-size: 18px;
-        margin-bottom: 5px;
-    }
-
-    .job-period {
-        font-size: 14px;
-        margin-bottom: 15px;
-        color: var(--secondary);
-    }
-
-    .job-description {
-        padding-left: 20px;
-    }
-
-    .job-description li {
-        padding-left: 25px;
     }
 }
 

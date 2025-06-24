@@ -1,53 +1,80 @@
 {{ partial "theme-toggle.html" . }}
-
 <header class="header">
     <nav class="nav">
         <div class="logo-container">
             <a href="{{ "" | absLangURL }}" accesskey="h" title="{{ .Site.Title }} (Alt + H)" class="logo">
                 <img src="{{ "img/logo.svg" | absURL }}" alt="{{ .Site.Title }}">
             </a>
-            <div class="nav-buttons">
-                {{- if (not site.Params.disableThemeToggle) }}
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
-                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                    </svg>
-                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="5"></circle>
-                        <line x1="12" y1="1" x2="12" y2="3"></line>
-                        <line x1="12" y1="21" x2="12" y2="23"></line>
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                        <line x1="1" y1="12" x2="3" y2="12"></line>
-                        <line x1="21" y1="12" x2="23" y2="12"></line>
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                    </svg>
-                </button>
-                {{- end }}
-                <button class="menu-trigger" aria-label="菜单">
-                    <div class="hamburger-menu">
-                        <span class="line"></span>
-                        <span class="line"></span>
-                        <span class="line"></span>
-                    </div>
-                </button>
+            {{- if (not site.Params.disableThemeToggle) }}
+            <button id="theme-toggle" accesskey="t" title="(Alt + T)" class="desktop-only theme-toggle">
+                <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+                <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+            </button>
+            {{- end }}
+        </div>
+
+        <div class="nav-controls">
+            <button class="menu-trigger" aria-label="菜单" aria-expanded="false">
+                <span class="menu-trigger-icon">
+                    <span class="line"></span>
+                    <span class="line"></span>
+                    <span class="line"></span>
+                </span>
+            </button>
+            {{- if (not site.Params.disableThemeToggle) }}
+            <button id="theme-toggle" accesskey="t" title="(Alt + T)" class="mobile-only theme-toggle">
+                <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+                <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+            </button>
+            {{- end }}
+        </div>
+
+        {{- if site.Menus.main }}
+        <div class="nav-menu-container">
+            <div class="nav-menu-wrapper">
+                <ul id="menu" role="menu">
+                    {{- range site.Menus.main }}
+                    <li role="menuitem">
+                        <a href="{{ .URL | absLangURL }}" title="{{ .Title | default .Name }}">
+                            <span class="menu-text">{{ .Name }}</span>
+                        </a>
+                    </li>
+                    {{- end }}
+                </ul>
             </div>
         </div>
-        {{- if site.Menus.main }}
-        <ul id="menu">
-            {{- range site.Menus.main }}
-            <li>
-                <a href="{{ .URL | absLangURL }}" title="{{ .Title | default .Name }}">
-                    <span>{{ .Name }}</span>
-                </a>
-            </li>
-            {{- end }}
-        </ul>
         {{- end }}
     </nav>
 </header>
@@ -55,28 +82,50 @@
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     const menuTrigger = document.querySelector('.menu-trigger');
+    const menuContainer = document.querySelector('.nav-menu-container');
+    const menuWrapper = document.querySelector('.nav-menu-wrapper');
     const menu = document.getElementById('menu');
+    const body = document.body;
     
-    if (menuTrigger && menu) {
-        menuTrigger.addEventListener('click', function() {
-            menuTrigger.classList.toggle('active');
-            menu.classList.toggle('active');
+    function toggleMenu() {
+        const isExpanded = menuTrigger.getAttribute('aria-expanded') === 'true';
+        menuTrigger.setAttribute('aria-expanded', !isExpanded);
+        menuTrigger.classList.toggle('active');
+        menuContainer.classList.toggle('active');
+        menuWrapper.classList.toggle('active');
+        body.classList.toggle('nav-menu-open');
+    }
+
+    if (menuTrigger && menuContainer && menuWrapper) {
+        // 点击菜单按钮
+        menuTrigger.addEventListener('click', function(e) {
+            e.stopPropagation();
+            toggleMenu();
         });
 
-        // 点击菜单外部时关闭菜单
+        // 点击菜单外部关闭菜单
         document.addEventListener('click', function(event) {
-            if (!menu.contains(event.target) && !menuTrigger.contains(event.target)) {
-                menuTrigger.classList.remove('active');
-                menu.classList.remove('active');
+            if (!menuWrapper.contains(event.target) && !menuTrigger.contains(event.target)) {
+                if (menuContainer.classList.contains('active')) {
+                    toggleMenu();
+                }
             }
         });
 
-        // 点击菜单项时关闭菜单
-        menu.querySelectorAll('a').forEach(function(link) {
-            link.addEventListener('click', function() {
-                menuTrigger.classList.remove('active');
-                menu.classList.remove('active');
-            });
+        // ESC键关闭菜单
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && menuContainer.classList.contains('active')) {
+                toggleMenu();
+            }
         });
+
+        // 点击菜单项关闭菜单
+        if (menu) {
+            menu.querySelectorAll('a').forEach(function(link) {
+                link.addEventListener('click', function() {
+                    toggleMenu();
+                });
+            });
+        }
     }
 });</script> 
