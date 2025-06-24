@@ -64,12 +64,17 @@
     transform-origin: center;
 }
 
+/* 深色模式下的logo样式 */
+.dark .logo img {
+    filter: brightness(0) invert(1);
+}
+
 /* 移动端适配 */
 @media screen and (max-width: 768px) {
     .nav {
         padding: 15px 20px;
         flex-direction: column;
-        gap: 15px;
+        gap: 0;
     }
 
     .logo-container {
@@ -77,6 +82,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        margin-bottom: 10px;
     }
 
     .logo img {
@@ -87,17 +93,29 @@
         width: 100%;
         padding: 0;
         margin: 0;
+        display: flex;
         justify-content: center;
-        gap: 15px;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* IE and Edge */
+    }
+
+    #menu::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, Opera */
     }
 
     #menu li {
         margin: 0;
+        white-space: nowrap;
     }
 
     #menu li a {
-        padding: 8px 12px;
-        font-size: 18px;
+        padding: 8px 10px;
+        font-size: 15px;
         display: inline-block;
     }
 
@@ -115,7 +133,6 @@
 @media screen and (max-width: 480px) {
     .nav {
         padding: 12px 15px;
-        gap: 12px;
     }
 
     .logo img {
@@ -123,12 +140,12 @@
     }
 
     #menu {
-        gap: 13px;
+        gap: 8px;
     }
 
     #menu li a {
-        padding: 6px 10px;
-        font-size: 16px;
+        padding: 6px 8px;
+        font-size: 14px;
     }
 
     #theme-toggle svg {
@@ -142,6 +159,8 @@
     display: flex;
     align-items: center;
     list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 @media screen and (max-width: 768px) {

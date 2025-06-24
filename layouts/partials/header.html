@@ -26,6 +26,24 @@
     }
 </script>
 {{- end }}
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const themeToggle = document.getElementById("theme-toggle");
+        if (themeToggle) {
+            themeToggle.addEventListener("click", function() {
+                if (document.body.classList.contains('dark')) {
+                    document.body.classList.remove('dark');
+                    localStorage.setItem("pref-theme", "light");
+                } else {
+                    document.body.classList.add('dark');
+                    localStorage.setItem("pref-theme", "dark");
+                }
+            });
+        }
+    });
+</script>
+
 {{- /* theme-toggle is disabled and theme is auto */}}
 {{- else if (and (ne site.Params.defaultTheme "light") (ne site.Params.defaultTheme "dark"))}}
 <script>
