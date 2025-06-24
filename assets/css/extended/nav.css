@@ -173,6 +173,7 @@
         transition: transform 0.3s ease;
         z-index: 100;
         border-bottom: 1px solid var(--border);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
 
     #menu.active {
@@ -182,13 +183,23 @@
     #menu li {
         margin: 0;
         border-top: 1px solid var(--border);
+        width: 100%;
     }
 
     #menu li a {
-        padding: 12px 20px;
+        padding: 15px 20px;
         display: block;
         text-align: center;
         font-size: 16px;
+        width: 100%;
+        box-sizing: border-box;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    #menu li a:hover {
+        background-color: var(--border);
     }
 }
 

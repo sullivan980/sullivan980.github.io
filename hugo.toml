@@ -177,7 +177,7 @@ home = ["HTML", "RSS", "JSON"]  # 启用 JSON 输出，用于搜索功能
     favicon32x32 = "img/favicon-32x32.png"
     apple_touch_icon = "img/apple-touch-icon.png"
     safari_pinned_tab = "safari-pinned-tab.svg"
-    custom_css = ["css/custom.css"]
+    custom_css = ["css/extended/nav.css", "css/extended/about.css"]
     custom_js = ["js/custom.js"]
 
   # ===== 搜索功能配置 =====

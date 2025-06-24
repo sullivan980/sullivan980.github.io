@@ -4,7 +4,7 @@
     <nav class="nav">
         <div class="logo-container">
             <a href="{{ "" | absLangURL }}" accesskey="h" title="{{ .Site.Title }} (Alt + H)" class="logo">
-                <img src="/img/logo.svg" alt="{{ .Site.Title }}">
+                <img src="{{ "img/logo.svg" | absURL }}" alt="{{ .Site.Title }}">
             </a>
             <div class="nav-buttons">
                 {{- if (not site.Params.disableThemeToggle) }}
