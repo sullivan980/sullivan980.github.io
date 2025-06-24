@@ -253,6 +253,12 @@ home = ["HTML", "RSS", "JSON"]  # 启用 JSON 输出，用于搜索功能
   url = "/talks"
   weight = 50
 
+[[menu.main]]
+identifier = "about"
+name = "关于我"
+url = "/about"
+weight = 60
+
 # ===== SEO 配置 =====
 [sitemap]
   changefreq = "weekly"

@@ -1,0 +1,219 @@
+/* 导航栏样式 */
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: calc(var(--nav-width) + var(--gap) * 2);
+    margin-inline-start: auto;
+    margin-inline-end: auto;
+    line-height: var(--header-height);
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+.logo img {
+    height: 45px;
+    width: auto;
+    transform-origin: center;
+}
+
+/* 深色模式下的logo样式 */
+.dark .logo img {
+    filter: brightness(0) invert(1);
+}
+
+/* 主题切换按钮样式 */
+#theme-toggle {
+    padding: 0;
+    margin: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: var(--content);
+    display: flex;
+    align-items: center;
+}
+
+#theme-toggle svg {
+    height: 28px;
+    width: 28px;
+    margin: 0;
+}
+
+/* Logo hover 动画 */
+.logo:hover img {
+    animation: shake 2.5s ease-in-out;
+}
+
+@keyframes shake {
+    0%, 100% { transform: rotate(0deg); }
+    5% { transform: rotate(-5deg); }
+    15% { transform: rotate(4deg); }
+    25% { transform: rotate(-4deg); }
+    35% { transform: rotate(3deg); }
+    45% { transform: rotate(-3deg); }
+    55% { transform: rotate(2deg); }
+    65% { transform: rotate(-2deg); }
+    75% { transform: rotate(1deg); }
+    85% { transform: rotate(-1deg); }
+    95% { transform: rotate(0deg); }
+}
+
+/* 导航菜单样式 */
+#menu {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* 移动端菜单按钮 */
+.menu-trigger {
+    display: none;
+    padding: 8px;
+    margin-left: 15px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: var(--primary);
+}
+
+/* 汉堡包菜单图标 */
+.hamburger-menu {
+    width: 24px;
+    height: 20px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.hamburger-menu .line {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: var(--primary);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    transform-origin: left center;
+}
+
+/* 汉堡包菜单动画 */
+.menu-trigger.active .hamburger-menu .line:nth-child(1) {
+    transform: rotate(45deg);
+    width: 110%;
+}
+
+.menu-trigger.active .hamburger-menu .line:nth-child(2) {
+    opacity: 0;
+    transform: translateX(-10px);
+}
+
+.menu-trigger.active .hamburger-menu .line:nth-child(3) {
+    transform: rotate(-45deg);
+    width: 110%;
+}
+
+/* 移动端适配 */
+@media screen and (max-width: 768px) {
+    .nav {
+        padding: 15px 20px;
+    }
+
+    .logo-container {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logo {
+        height: 45px;
+    }
+
+    /* 右侧按钮组 */
+    .nav-buttons {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .menu-trigger {
+        display: block;
+        margin-left: 0;
+    }
+
+    #theme-toggle {
+        margin: 0;
+        padding: 8px;
+    }
+
+    #menu {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: var(--entry);
+        flex-direction: column;
+        align-items: stretch;
+        padding: 0;
+        margin: 0;
+        transform: translateY(-150%);
+        transition: transform 0.3s ease;
+        z-index: 100;
+        border-bottom: 1px solid var(--border);
+    }
+
+    #menu.active {
+        transform: translateY(0);
+    }
+
+    #menu li {
+        margin: 0;
+        border-top: 1px solid var(--border);
+    }
+
+    #menu li a {
+        padding: 12px 20px;
+        display: block;
+        text-align: center;
+        font-size: 16px;
+    }
+}
+
+/* 更小屏幕的适配 */
+@media screen and (max-width: 480px) {
+    .nav {
+        padding: 12px 15px;
+    }
+
+    .logo img {
+        height: 40px;
+    }
+
+    #menu li a {
+        padding: 10px 15px;
+        font-size: 15px;
+    }
+
+    .hamburger-menu {
+        width: 22px;
+        height: 18px;
+    }
+
+    #theme-toggle svg {
+        height: 24px;
+        width: 24px;
+    }
+} 

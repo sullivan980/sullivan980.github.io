@@ -1,0 +1,85 @@
+{{- define "main" }}
+<article class="about-container">
+    <!-- About Me Section with Heading Line -->
+    <div class="about-header">
+        <h2 class="numbered-heading" data-number="1">自我介绍</h2>
+    </div>
+
+    <div class="about-content-wrapper">
+        <div class="about-text-content">
+            {{ .Content }}
+        </div>
+        <div class="about-image-wrapper">
+            <div class="about-image">
+                <img src="/img/avatar.png" alt="Profile Photo" />
+            </div>
+        </div>
+    </div>
+
+    <!-- Work Experience Section -->
+    {{ with .Params.experience }}
+    <section class="work-experience">
+        <h2 class="numbered-heading" data-number="2">工作经历</h2>
+        <div class="work-container">
+            <div class="companies-list">
+                {{ range $index, $exp := . }}
+                <button class="company-tab{{ if eq $index 0 }} active{{ end }}" data-company="company{{ add $index 1 }}">
+                    {{ $exp.company }}
+                </button>
+                {{ end }}
+                <div class="highlight-bar"></div>
+            </div>
+            
+            <div class="job-details">
+                {{ range $index, $exp := . }}
+                <div class="job-content{{ if eq $index 0 }} active{{ end }}" id="company{{ add $index 1 }}">
+                    <h3>{{ $exp.position }} <span>@ {{ $exp.company }}</span></h3>
+                    <p class="job-period">{{ $exp.period }}</p>
+                    <ul class="job-description">
+                        {{ range $exp.duties }}
+                        <li>{{ . }}</li>
+                        {{ end }}
+                    </ul>
+                </div>
+                {{ end }}
+            </div>
+        </div>
+    </section>
+    {{ end }}
+</article>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const tabs = document.querySelectorAll('.company-tab');
+    const contents = document.querySelectorAll('.job-content');
+    const highlightBar = document.querySelector('.highlight-bar');
+
+    // 初始化高亮条的位置
+    if (tabs.length > 0) {
+        const activeTab = document.querySelector('.company-tab.active');
+        updateHighlightBar(activeTab);
+    }
+
+    tabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+            // 移除所有active类
+            tabs.forEach(t => t.classList.remove('active'));
+            contents.forEach(c => c.classList.remove('active'));
+
+            // 添加active类到当前选中的tab
+            this.classList.add('active');
+            const company = this.getAttribute('data-company');
+            document.getElementById(company).classList.add('active');
+
+            // 更新高亮条位置
+            updateHighlightBar(this);
+        });
+    });
+
+    function updateHighlightBar(activeTab) {
+        highlightBar.style.transform = `translateY(${activeTab.offsetTop}px)`;
+        highlightBar.style.height = `${activeTab.offsetHeight}px`;
+    }
+});
+</script>
+{{ end }} 
