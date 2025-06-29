@@ -203,6 +203,17 @@
     z-index: 20;
 }
 
+/* PC端的导航菜单容器 */
+.nav-menu-desktop {
+    display: flex;
+    align-items: center;
+}
+
+/* 移动端导航菜单容器 - 默认隐藏 */
+.nav-menu-mobile {
+    display: none;
+}
+
 /* 移动端样式 */
 @media screen and (max-width: 768px) {
     .desktop-only {
@@ -211,6 +222,37 @@
 
     .mobile-only {
         display: flex;
+    }
+
+    /* 隐藏PC端菜单，显示移动端菜单结构 */
+    .nav-menu-desktop {
+        display: none;
+    }
+    
+    .nav-menu-mobile {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: rgba(var(--entry-rgb), 0.55);
+        backdrop-filter: blur(25px);
+        -webkit-backdrop-filter: blur(25px);
+        visibility: hidden;
+        opacity: 0;
+        transition: visibility 0.3s ease,
+                    opacity 0.3s ease;
+        z-index: 98;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden; /* 禁止容器滚动 */
+    }
+
+    .nav-menu-mobile.active {
+        visibility: visible;
+        opacity: 1;
     }
 
     .menu-trigger {
@@ -230,38 +272,12 @@
         order: 1;
     }
 
-    /* 菜单容器 */
-    .nav-menu-container {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100vh;
-        background: rgba(var(--entry-rgb), 0.85);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        visibility: hidden;
-        opacity: 0;
-        transition: visibility 0.3s ease,
-                    opacity 0.3s ease;
-        z-index: 15;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        overflow: hidden; /* 禁止容器滚动 */
-    }
-
-    .nav-menu-container.active {
-        visibility: visible;
-        opacity: 1;
-    }
-
     /* 菜单包装器 */
     .nav-menu-wrapper {
         position: relative;
         width: 100%;
         max-width: 300px;
-        padding: 20px;
+        padding: 40px 20px; /* 增加上下内边距 */
         transform: translateY(-30%);
         transition: transform 0.4s var(--ease-out);
         z-index: 16;
@@ -271,13 +287,13 @@
         transform: translateY(0);
     }
 
-    #menu {
+    #mobile-menu {
         flex-direction: column;
         align-items: center;
         width: 100%;
         padding: 0;
         margin: 0;
-        gap: 1px;
+        gap: 16px;
         max-height: 85vh;
         overflow-y: auto;
         overflow-x: hidden;
@@ -287,10 +303,11 @@
         /* 隐藏滚动条但保持可滚动 */
         scrollbar-width: none; /* Firefox */
         -ms-overflow-style: none; /* IE and Edge */
+        list-style: none;
     }
 
     /* 隐藏Webkit浏览器的滚动条 */
-    #menu::-webkit-scrollbar {
+    #mobile-menu::-webkit-scrollbar {
         display: none;
     }
 
@@ -308,11 +325,11 @@
     }
 
     /* 确保菜单项可以点击 */
-    body.nav-menu-open .nav-menu-container {
+    body.nav-menu-open .nav-menu-mobile {
         pointer-events: auto;
     }
 
-    #menu li {
+    #mobile-menu li {
         width: 100%;
         text-align: center;
         opacity: 0;
@@ -320,46 +337,48 @@
         transition: opacity 0.3s ease,
                     transform 0.3s var(--ease-out);
         margin: 0 !important;
+        padding: 5px 0;
     }
 
-    #menu li + li {
+    #mobile-menu li + li {
         margin: 0 !important;
     }
 
-    .nav-menu-wrapper.active #menu li {
+    .nav-menu-wrapper.active #mobile-menu li {
         opacity: 1;
         transform: translateY(0);
     }
 
     /* 为每个菜单项添加延迟 */
-    .nav-menu-wrapper.active #menu li:nth-child(1) { transition-delay: 0.1s; }
-    .nav-menu-wrapper.active #menu li:nth-child(2) { transition-delay: 0.15s; }
-    .nav-menu-wrapper.active #menu li:nth-child(3) { transition-delay: 0.2s; }
-    .nav-menu-wrapper.active #menu li:nth-child(4) { transition-delay: 0.25s; }
-    .nav-menu-wrapper.active #menu li:nth-child(5) { transition-delay: 0.3s; }
+    .nav-menu-wrapper.active #mobile-menu li:nth-child(1) { transition-delay: 0.1s; }
+    .nav-menu-wrapper.active #mobile-menu li:nth-child(2) { transition-delay: 0.15s; }
+    .nav-menu-wrapper.active #mobile-menu li:nth-child(3) { transition-delay: 0.2s; }
+    .nav-menu-wrapper.active #mobile-menu li:nth-child(4) { transition-delay: 0.25s; }
+    .nav-menu-wrapper.active #mobile-menu li:nth-child(5) { transition-delay: 0.3s; }
+    .nav-menu-wrapper.active #mobile-menu li:nth-child(6) { transition-delay: 0.35s; }
 
-    #menu li a {
+    #mobile-menu li a {
         display: inline-block;
         width: 100%;
-        max-width: 200px;
-        padding: 6px 20px;
-        font-size: 1.2em;
-        background: rgba(var(--entry-rgb), 0.5);
-        backdrop-filter: blur(8px);
-        -webkit-backdrop-filter: blur(8px);
+        max-width: 220px;
+        padding: 12px 20px;
+        font-size: 1.1em;
+        background: rgba(var(--entry-rgb), 0.4);
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
         border: 1px solid rgba(var(--border-rgb), 0.1);
         border-radius: 12px;
         transition: all 0.2s ease;
     }
 
-    #menu li a .menu-text {
+    #mobile-menu li a .menu-text {
         display: block;
         width: 100%;
         text-align: center;
     }
 
-    #menu li a:hover {
-        background: rgba(var(--entry-rgb), 0.8);
+    #mobile-menu li a:hover {
+        background: rgba(var(--entry-rgb), 0.6);
         transform: translateY(-2px);
     }
 
@@ -387,5 +406,35 @@
     #menu li a {
         padding: 14px;
         font-size: 1em;
+    }
+}
+
+/* 导航栏固定效果 */
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 99;
+    background-color: var(--theme);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+/* 深色模式下的导航栏样式 */
+body.dark .header {
+    background-color: var(--theme);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* 确保灯泡在导航栏上方 */
+.theme-toggle-container {
+    z-index: 100;
+}
+
+/* 响应式调整 */
+@media screen and (max-width: 768px) {
+    .header {
+        padding: 10px 0;
     }
 } 
