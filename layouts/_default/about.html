@@ -1,41 +1,45 @@
 {{- define "main" }}
 <article class="about-container">
-    <!-- About Me Section with Heading Line -->
-    <div class="about-header">
-        <h2 class="numbered-heading" data-number="1">自我介绍</h2>
-    </div>
-
-    <div class="about-content-wrapper">
-        <div class="about-text-content">
-            {{ .Content }}
-        </div>
-        <div class="about-image-wrapper">
-            <div class="about-image">
-                <img src="/img/avatar.png" alt="Profile Photo" />
+    <!-- 第一部分：自我介绍 -->
+    <section id="about-intro" class="about-section">
+        <h2 class="section-heading" data-number="1">自我介绍</h2>
+        
+        <div class="intro-content">
+            <div class="intro-text">
+                {{ .Content }}
+            </div>
+            <div class="intro-image">
+                <div class="image-wrapper">
+                    <img src="/img/avatar.png" alt="Profile Photo" />
+                </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- Work Experience Section -->
+    <!-- 第二部分：工作经历 -->
     {{ with .Params.experience }}
-    <section class="work-experience">
-        <h2 class="numbered-heading" data-number="2">工作经历</h2>
-        <div class="work-container">
-            <div class="companies-list">
+    <section id="about-experience" class="about-section">
+        <h2 class="section-heading" data-number="2">工作经历</h2>
+        
+        <div class="experience-content">
+            <div class="company-tabs">
                 {{ range $index, $exp := . }}
-                <button class="company-tab{{ if eq $index 0 }} active{{ end }}" data-company="company{{ add $index 1 }}">
+                <button class="tab-button{{ if eq $index 0 }} active{{ end }}" data-tab="tab-{{ $index }}">
                     <span>{{ $exp.company }}</span>
                 </button>
                 {{ end }}
-                <div class="highlight-bar"></div>
+                <div class="tab-highlight"></div>
             </div>
             
-            <div class="job-details">
+            <div class="experience-details">
                 {{ range $index, $exp := . }}
-                <div class="job-content{{ if eq $index 0 }} active{{ end }}" id="company{{ add $index 1 }}">
-                    <h3>{{ $exp.position }} <span>@ {{ $exp.company }}</span></h3>
-                    <p class="job-period">{{ $exp.period }}</p>
-                    <ul class="job-description">
+                <div class="experience-tab{{ if eq $index 0 }} active{{ end }}" id="tab-{{ $index }}">
+                    <h3 class="position-title">{{ $exp.position }}</h3>
+                    <div class="company-row">
+                        <span class="company-name">@ {{ $exp.company }}</span>
+                        <span class="experience-period">{{ $exp.period }}</span>
+                    </div>
+                    <ul class="experience-duties">
                         {{ range $exp.duties }}
                         <li>{{ . }}</li>
                         {{ end }}
@@ -46,17 +50,55 @@
         </div>
     </section>
     {{ end }}
+
+    <!-- 第三部分：个人项目 -->
+    {{ with .Params.projects }}
+    <section id="about-projects" class="about-section">
+        <h2 class="section-heading" data-number="3">个人项目</h2>
+        
+        <div class="projects-grid">
+            {{ range $project := . }}
+            {{ if $project.link }}
+            <a href="{{ $project.link }}" class="project-card-link" target="_blank" rel="noopener noreferrer">
+            {{ end }}
+                <div class="project-card">
+                    <div class="pin-shadow"></div>
+                    <div class="project-header">
+                        <h3 class="project-title">{{ $project.name }}</h3>
+                        <span class="project-subtitle">{{ $project.subtitle }}</span>
+                    </div>
+                    
+                    <div class="project-tech">
+                        {{ range $project.tech_stack }}
+                        <span class="tech-tag">{{ . }}</span>
+                        {{ end }}
+                    </div>
+                    
+                    <ul class="project-details">
+                        {{ range $project.details }}
+                        <li>{{ . }}</li>
+                        {{ end }}
+                    </ul>
+                </div>
+            {{ if $project.link }}
+            </a>
+            {{ end }}
+            {{ end }}
+        </div>
+    </section>
+    {{ end }}
 </article>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    const tabs = document.querySelectorAll('.company-tab');
-    const contents = document.querySelectorAll('.job-content');
-    const highlightBar = document.querySelector('.highlight-bar');
+    // 工作经历标签切换
+    const tabs = document.querySelectorAll('.tab-button');
+    const contents = document.querySelectorAll('.experience-tab');
+    const highlightBar = document.querySelector('.tab-highlight');
 
     // 初始化高亮条的位置
     if (tabs.length > 0) {
-        const activeTab = document.querySelector('.company-tab.active');
+        const activeTab = document.querySelector('.tab-button.active');
         updateHighlightBar(activeTab);
     }
 
@@ -68,8 +110,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // 添加active类到当前选中的tab
             this.classList.add('active');
-            const company = this.getAttribute('data-company');
-            document.getElementById(company).classList.add('active');
+            const tabId = this.getAttribute('data-tab');
+            document.getElementById(tabId).classList.add('active');
 
             // 更新高亮条位置
             updateHighlightBar(this);
@@ -77,9 +119,24 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     function updateHighlightBar(activeTab) {
-        highlightBar.style.transform = `translateY(${activeTab.offsetTop}px)`;
-        highlightBar.style.height = `${activeTab.offsetHeight}px`;
+        if (window.innerWidth <= 768) {
+            // 平板和手机模式下，高亮条在底部
+            highlightBar.style.transform = `translateX(${activeTab.offsetLeft}px)`;
+            highlightBar.style.width = `${activeTab.offsetWidth}px`;
+        } else {
+            // 桌面模式下，高亮条在左侧
+            highlightBar.style.transform = `translateY(${activeTab.offsetTop}px)`;
+            highlightBar.style.height = `${activeTab.offsetHeight}px`;
+        }
     }
+
+    // 响应式布局处理
+    window.addEventListener('resize', function() {
+        const activeTab = document.querySelector('.tab-button.active');
+        if (activeTab) {
+            updateHighlightBar(activeTab);
+        }
+    });
 });
 </script>
 {{ end }} 

@@ -20,6 +20,31 @@ experience:
       - "实现订单系统重构，提升系统可扩展性"
       - "设计并实现数据统计分析平台"
       - "负责系统性能优化，提升用户体验"
+projects:
+  - name: "Sullivan Blog"
+    subtitle: "个人技术博客"
+    link: "https://github.com/sullivan980/sullivan-blog"
+    details:
+      - "基于 Hugo 的个人技术博客"
+      - "使用 PaperMod 主题"
+      - "支持暗黑模式、搜索、标签等功能"
+    tech_stack: ["Hugo", "Go", "JavaScript", "CSS"]
+  - name: "Spring Boot Admin"
+    subtitle: "企业级后台管理系统"
+    link: "https://github.com/sullivan980/spring-boot-admin"
+    details:
+      - "基于 Spring Boot 和 Vue3 的后台管理系统"
+      - "包含权限管理、日志监控、性能分析等功能"
+      - "支持多租户和插件化架构"
+    tech_stack: ["Spring Boot", "Vue3", "MySQL", "Redis"]
+  - name: "Cloud Native Platform"
+    subtitle: "云原生应用平台"
+    link: "https://github.com/sullivan980/cloud-platform"
+    details:
+      - "基于 Kubernetes 的云原生应用平台"
+      - "支持应用自动部署、扩缩容"
+      - "内置监控告警和日志分析"
+    tech_stack: ["Kubernetes", "Docker", "Prometheus", "Go"]
 ---
 
 热衷于创造优秀软件的全栈工程师。专注于构建高质量、高性能的企业级应用。主要关注Java后端开发和现代前端技术，同时对软件架构设计和性能优化有浓厚兴趣。

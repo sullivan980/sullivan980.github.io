@@ -1,0 +1,149 @@
+/* 拉绳灯主题切换按钮样式 */
+.theme-toggle-container {
+    position: fixed;
+    top: 0;
+    left: auto;
+    right: calc(50% + 190px); /* 调整位置到红框区域，更靠近logo */
+    transform: none;
+    z-index: 200; /* 增加z-index确保在固定导航栏上方 */
+    margin: 0;
+    padding: 0;
+    height: 100px;
+    overflow: visible;
+}
+
+.theme-toggle {
+    position: relative;
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+}
+
+/* 灯泡和拉绳的整体容器 */
+.lamp-unit {
+    position: relative;
+    width: 24px;
+    height: 90px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 拉绳样式 */
+.pull-cord {
+    position: absolute;
+    top: 0;
+    width: 2px;
+    height: 60px;
+    background-color: #b0b0b0;
+    z-index: 1;
+}
+
+/* 拉绳底部圆球 */
+.pull-cord::after {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 50%;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #b0b0b0;
+    transform: translateX(-50%);
+}
+
+/* 灯泡样式 */
+.bulb {
+    position: absolute;
+    top: 60px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: #555; /* 浅色模式下的灯泡颜色 */
+    box-shadow: none;
+    cursor: pointer;
+    z-index: 2;
+}
+
+/* 灯泡内部发光效果 */
+.bulb::after {
+    content: "";
+    position: absolute;
+    top: 20%;
+    left: 20%;
+    width: 30%;
+    height: 30%;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.3);
+    filter: blur(1px);
+}
+
+/* 灯泡顶部连接点 */
+.bulb::before {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: 50%;
+    width: 4px;
+    height: 4px;
+    background-color: #b0b0b0;
+    border-radius: 50%;
+    transform: translateX(-50%);
+}
+
+/* 鼠标悬停效果 */
+.theme-toggle:hover .lamp-unit {
+    transform: translateY(2px);
+}
+
+/* 拉动动画 */
+@keyframes pull-animation {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(15px); }
+    100% { transform: translateY(0); }
+}
+
+.theme-toggle.pulling .lamp-unit {
+    animation: pull-animation 0.5s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+    pointer-events: none; /* 动画过程中禁止交互 */
+}
+
+/* 暗色模式下的灯泡样式 */
+body.dark .bulb {
+    background-color: #ffd75e;
+    box-shadow: 0 0 10px rgba(255, 215, 94, 0.7);
+}
+
+body.dark .bulb::after {
+    background-color: rgba(255, 255, 255, 0.8);
+    opacity: 1;
+}
+
+/* 响应式样式 */
+@media screen and (max-width: 768px) {
+    .theme-toggle-container {
+        top: 0;
+        right: 100px; /* 在移动设备上调整位置 */
+        height: 80px;
+    }
+    
+    .lamp-unit {
+        height: 70px;
+    }
+    
+    .pull-cord {
+        height: 45px;
+    }
+    
+    .bulb {
+        top: 45px;
+    }
+} 
