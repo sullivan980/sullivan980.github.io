@@ -1,3 +1,37 @@
+# Hugo默认输出目录
 public/
+
+# Hugo资源缓存
+resources/
 resources/_gen/
-.DS_Store 
+.resources/
+resources/_gen/assets/
+resources/_gen/images/
+
+# Hugo构建文件
+.hugo_build.lock
+
+# 操作系统文件
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# 编辑器临时文件
+*.swp
+*.swo
+*~
+*.bak
+*.orig
+.vscode/
+.idea/
+
+# 依赖管理
+node_modules/
+package-lock.json
+yarn.lock
+
+# 其他临时文件
+*.log
+*.tmp
+.tmp/
+tmp/ 
