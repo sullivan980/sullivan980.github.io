@@ -6,7 +6,7 @@ baseURL = "https://sullivan980.github.io/"
 title = "Sullivan's blog"
 theme = "Aria"
 defaultContentLanguage = "zh"  # 默认语言
-min_version = "0.147.4"        # Hugo 最低版本要求
+min_version = "0.146.0"        # Hugo 最低版本要求
 
 # 站点元数据
 copyright = "© 2025 Sullivan · Blog"  # 版权信息
@@ -154,7 +154,6 @@ features = [
   images = ["img/site-feature-image.jpg"]  # 默认社交媒体分享图片
   DateFormat = "2006-01-02"        # 日期格式
   defaultTheme = "auto"            # 默认主题 (auto, light, dark)
-  favicon = "/img/favicon.svg"      # 网站图标设置
   
   # ===== 功能开关 =====
   disableThemeToggle = false        # 是否禁用主题切换按钮
@@ -240,14 +239,29 @@ features = [
 
   # ===== 资源文件配置 =====
   [params.assets]
+    # 基本设置
     disableHLJS = false          # 是否禁用 highlight.js
     disableFingerprinting = true # 是否禁用资源指纹
     disableLiveReload = true     # 生产环境禁用livereload
-    favicon = "img/favicon.ico"
-    favicon16x16 = "img/favicon-16x16.png"
-    favicon32x32 = "img/favicon-32x32.png"
-    apple_touch_icon = "img/apple-touch-icon.png"
-    safari_pinned_tab = "safari-pinned-tab.svg"
+    
+    # 网站图标
+    favicon = "/img/favicon.svg"      # 网站图标
+    favicon16x16 = "/img/favicon.svg" # 16x16 网站图标
+    favicon32x32 = "/img/favicon.svg" # 32x32 网站图标
+    apple_touch_icon = "/img/avatar.png" # 苹果触摸图标
+    safari_pinned_tab = "/img/logo.svg"  # Safari 固定标签图标
+    
+    # 头像和徽标
+    avatar = "/img/avatar.png"   # 用户头像
+    logo = "/img/logo.svg"       # 网站徽标
+    
+    # 文件
+    resume = "/files/resume.pdf" # 简历文件
+    
+    # 其他资源文件
+    defaultCover = "/img/default-cover.jpg" # 默认文章封面图（注意：此文件目前不存在，需要创建）
+    
+    # 自定义 CSS 和 JS
     custom_css = ["css/extended/nav.css", "css/extended/about.css"]
     custom_js = ["js/custom.js"]
 
@@ -291,7 +305,6 @@ features = [
     dismiss = "同意"
     
   # ===== 关于页面参数 =====
-  avatar = "/img/avatar.jpg"
   githubUsername = "sullivan980"
   followers = "10"
   following = "20"
@@ -302,7 +315,6 @@ features = [
   [params.about]
     [params.about.intro]
       description = "热衷于创造优秀软件的全栈工程师。专注于构建高质量、高性能的企业级应用。主要关注Java后端开发和现代前端技术，同时对软件架构设计和性能优化有浓厚兴趣。"
-      avatar = "/img/avatar.png"
       skills = [
         "Java / Spring Boot",
         "Vue.js / React",
