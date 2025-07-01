@@ -1,63 +1,27 @@
-# 基本配置
+########################################################################################
+# Hugo 基础配置（与主题无关的标准配置）
+########################################################################################
+# 站点基本信息
 baseURL = "https://sullivan980.github.io/"
 title = "Sullivan's blog"
-theme = "PaperMod"
+theme = "Aria"
 defaultContentLanguage = "zh"  # 默认语言
-min_version = "0.146.0"        # Hugo 最低版本要求
+min_version = "0.147.4"        # Hugo 最低版本要求
 
-# 站点信息
+# 站点元数据
 copyright = "© 2025 Sullivan · Blog"  # 版权信息
 license = "MIT"               # 许可证类型
 licenselink = "https://github.com/sullivan980/sullivan-blog/blob/master/LICENSE"  # 许可证链接
 description = "A fast, clean, responsive Hugo blog"  # 站点描述
-homepage = "https://sullivan980.github.io"              # 站点主页
-demosite = ""                                       # 演示站点
-
-# 主题标签
-tags = [
-  "responsive",     # 响应式设计
-  "simple",         # 简约设计
-  "clean",          # 简洁风格
-  "light",          # 亮色模式
-  "dark",           # 暗色模式
-  "blog",           # 博客类型
-  "minimalist",     # 极简主义
-  "highlight.js",   # 代码高亮
-  "search"          # 搜索功能
-]
-
-# 主题特性
-features = [
-  "responsive",                 # 响应式布局
-  "single-column",             # 单栏布局
-  "blog",                      # 博客功能
-  "cover-image",              # 封面图片
-  "table-of-contents",        # 文章目录
-  "opengraph",                # Open Graph 协议
-  "highlight.js",             # 代码高亮
-  "favicon",                  # 网站图标
-  "archive",                  # 文章归档
-  "share-icons",              # 分享按钮
-  "cover",                    # 文章封面
-  "multilingual",             # 多语言支持
-  "social-icons",             # 社交图标
-  "minified-assets",          # 资源压缩
-  "theme-toggle",             # 主题切换
-  "menu-location-indicator",  # 菜单位置指示
-  "scroll-to-top",           # 返回顶部
-  "search"                    # 搜索功能
-]
+homepage = "https://sullivan980.github.io"           # 站点主页
+demosite = ""                                        # 演示站点
 
 # 作者信息
 [author]
-  name = "Sullivan"                                 # 作者名称
-  homepage = "https://github.com/sullivan980/"      # 作者主页
+  name = "Sullivan"                            # 作者名称
+  homepage = "https://github.com/sullivan980/"  # 作者主页
 
-# 分页配置
-[pagination]
-pagerSize = 5  # 每页显示的文章数量
-
-# 功能开关
+# 内容构建设置
 enableRobotsTXT = true    # 启用 robots.txt
 buildDrafts = false       # 是否构建草稿
 buildFuture = false       # 是否构建未来日期的文章
@@ -67,7 +31,7 @@ enableGitInfo = true      # 启用 Git 信息
 
 # 输出配置
 [outputs]
-home = ["HTML", "RSS", "JSON"]  # 启用 JSON 输出，用于搜索功能
+  home = ["HTML", "RSS", "JSON"]  # 启用 JSON 输出，用于搜索功能
 
 # Markdown 配置
 [markup]
@@ -80,7 +44,106 @@ home = ["HTML", "RSS", "JSON"]  # 启用 JSON 输出，用于搜索功能
     [markup.goldmark.renderer]
       unsafe = true
 
-# 主要参数配置
+# SEO 配置
+[sitemap]
+  changefreq = "weekly"
+  filename = "sitemap.xml"
+  priority = 0.5
+
+# 隐私设置
+[privacy]
+  [privacy.x]
+    enableDNT = true
+    simple = true
+
+# RSS 配置
+[services.rss]
+  limit = 10  # RSS feed 中的文章数量
+
+[services]
+  [services.x]
+    disableInlineCSS = true
+
+# 模块配置
+[module]
+  [[module.imports]]
+    path = "github.com/KKKZOZ/hugo-admonitions"  # 提示框模块
+
+########################################################################################
+# Aria 主题特定配置（主题实现和定制的配置）
+########################################################################################
+# 主题标签（描述主题特性，仅供参考）
+tags = [
+  "responsive",     # 响应式设计
+  "simple",         # 简约设计
+  "clean",          # 简洁风格
+  "light",          # 亮色模式
+  "dark",           # 暗色模式
+  "blog",           # 博客类型
+  "minimalist",     # 极简主义
+  "highlight.js",   # 代码高亮
+  "search"          # 搜索功能
+]
+
+# 主题特性（描述主题功能，仅供参考）
+features = [
+  "responsive",                # 响应式布局
+  "single-column",             # 单栏布局
+  "blog",                      # 博客功能
+  "cover-image",               # 封面图片
+  "table-of-contents",         # 文章目录
+  "opengraph",                 # Open Graph 协议
+  "highlight.js",              # 代码高亮
+  "favicon",                   # 网站图标
+  "archive",                   # 文章归档
+  "share-icons",               # 分享按钮
+  "cover",                     # 文章封面
+  # "multilingual",            # 已禁用多语言支持
+  "social-icons",              # 社交图标
+  "minified-assets",           # 资源压缩
+  "theme-toggle",              # 主题切换
+  "menu-location-indicator",   # 菜单位置指示
+  "scroll-to-top",             # 返回顶部
+  "search"                     # 搜索功能
+]
+
+# 分页配置
+[pagination]
+  pagerSize = 5  # 每页显示的文章数量
+
+# 导航菜单配置
+[[menu.main]]
+  name = "搜索"
+  url = "/search"
+  weight = 10
+
+[[menu.main]]
+  name = "文章"
+  url = "/posts"
+  weight = 20
+
+[[menu.main]]
+  name = "归档"
+  url = "/archives"
+  weight = 30
+
+[[menu.main]]
+  name = "标签"
+  url = "/tags"
+  weight = 40
+
+[[menu.main]]
+  name = "随吐"
+  url = "/talks"
+  weight = 50
+
+[[menu.main]]
+  identifier = "about"
+  name = "关于我"
+  url = "/about"
+  weight = 60
+
+# 主题参数配置
 [params]
   # ===== 基础设置 =====
   env = "production"                # 环境设置
@@ -104,6 +167,13 @@ home = ["HTML", "RSS", "JSON"]  # 启用 JSON 输出，用于搜索功能
   tocopen = false               # 目录默认是否展开
   orderByPublishDate = true        # 按发布日期排序
   enableGitInfo = false            # 禁用 Git 信息，使用文章中的 date 字段
+  
+  # ===== 数学公式和图表设置 =====
+  [params.math]
+    enable = false  # 是否全局启用KaTeX数学公式渲染，仅在需要时设为true
+  
+  [params.diagram]
+    enable = false  # 是否全局启用Mermaid图表，仅在需要时设为true
   
   # ===== 文章显示设置 =====
   ShowReadingTime = true            # 显示阅读时间
@@ -172,6 +242,7 @@ home = ["HTML", "RSS", "JSON"]  # 启用 JSON 输出，用于搜索功能
   [params.assets]
     disableHLJS = false          # 是否禁用 highlight.js
     disableFingerprinting = true # 是否禁用资源指纹
+    disableLiveReload = true     # 生产环境禁用livereload
     favicon = "img/favicon.ico"
     favicon16x16 = "img/favicon-16x16.png"
     favicon32x32 = "img/favicon-32x32.png"
@@ -207,14 +278,6 @@ home = ["HTML", "RSS", "JSON"]  # 启用 JSON 输出，用于搜索功能
     name = "resume"
     url = "/resume"
 
-#  [[params.socialIcons]]
-#    name = "bilibili"
-#    url = "https://space.bilibili.com/your-profile"
-
-#  [[params.socialIcons]]
-#    name = "wechat"
-#    url = "javascript:void(0);"
-
   # ===== 编辑链接设置 =====
   [params.editPost]
     URL = "https://github.com/sullivan980/sullivan980.github.io/blob/main/content"
@@ -226,70 +289,82 @@ home = ["HTML", "RSS", "JSON"]  # 启用 JSON 输出，用于搜索功能
     enable = false        # 启用 Cookie 同意提示
     message = "此网站使用 cookies 来确保您在我们的网站上获得最佳体验。"
     dismiss = "同意"
+    
+  # ===== 关于页面参数 =====
+  avatar = "/img/avatar.jpg"
+  githubUsername = "sullivan980"
+  followers = "10"
+  following = "20"
+  stars = "30"
+  contributions = "30"
 
-# ===== 导航菜单配置 =====
-[[menu.main]]
-  name = "搜索"
-  url = "/search"
-  weight = 10
-
-[[menu.main]]
-  name = "归档"
-  url = "/archives"
-  weight = 20
-
-[[menu.main]]
-  name = "文章"
-  url = "/posts"
-  weight = 30
-
-[[menu.main]]
-  name = "标签"
-  url = "/tags"
-  weight = 40
-
-[[menu.main]]
-  name = "随吐"
-  url = "/talks"
-  weight = 50
-
-[[menu.main]]
-identifier = "about"
-name = "关于我"
-url = "/about"
-weight = 60
-
-# ===== SEO 配置 =====
-[sitemap]
-  changefreq = "weekly"
-  filename = "sitemap.xml"
-  priority = 0.5
-
-# ===== 隐私设置 =====
-[privacy]
-  [privacy.x]
-    enableDNT = true
-    simple = true
-
-# ===== RSS 配置 =====
-[services.rss]
-  limit = 10  # RSS feed 中的文章数量
-
-[services]
-  [services.x]
-    disableInlineCSS = true
-
-# ===== Hugo Modules =====
-[module]
-  [[module.imports]]
-    path = "github.com/KKKZOZ/hugo-admonitions"
-  [[module.imports]]
-    path = "PaperMod"
-
-# About page params
-avatar = "/img/avatar.jpg"
-githubUsername = "sullivan980"
-followers = "10"
-following = "20"
-stars = "30"
-contributions = "30"
+  # ===== 关于页面设置 =====
+  [params.about]
+    [params.about.intro]
+      description = "热衷于创造优秀软件的全栈工程师。专注于构建高质量、高性能的企业级应用。主要关注Java后端开发和现代前端技术，同时对软件架构设计和性能优化有浓厚兴趣。"
+      avatar = "/img/avatar.png"
+      skills = [
+        "Java / Spring Boot",
+        "Vue.js / React",
+        "MySQL / Redis",
+        "Docker / Kubernetes",
+        "TypeScript / Node.js",
+        "CI/CD"
+      ]
+    
+    [params.about.experience]
+      [[params.about.experience.items]]
+        company = "XXXXXXXX科技"
+        position = "高级软件工程师"
+        period = "2021 年 7 月 - 24 年 12 月"
+        duties = [
+          "负责公司核心业务系统的架构设计和开发",
+          "带领团队完成微服务架构转型，提升系统可扩展性",
+          "优化系统性能，将接口响应时间降低50%",
+          "指导初级开发人员，推动团队技术成长"
+        ]
+      
+      [[params.about.experience.items]]
+        company = "XXXXXXX公司"
+        position = "实习软件开发"
+        period = "2020 年 5 月 - 2021 年 6 月"
+        duties = [
+          "参与电商平台核心模块开发",
+          "实现订单系统重构，提升系统可扩展性",
+          "设计并实现数据统计分析平台",
+          "负责系统性能优化，提升用户体验"
+        ]
+    
+    [params.about.projects]
+      [[params.about.projects.items]]
+        name = "Sullivan Blog"
+        subtitle = "个人技术博客"
+        link = "https://github.com/sullivan980/sullivan-blog"
+        details = [
+          "基于 Hugo 的个人技术博客",
+          "使用 Aria 主题",
+          "支持暗黑模式、搜索、标签等功能"
+        ]
+        tech_stack = ["Hugo", "Go", "JavaScript", "CSS"]
+      
+      [[params.about.projects.items]]
+        name = "Spring Boot Admin"
+        subtitle = "企业级后台管理系统"
+        link = "https://github.com/sullivan980/spring-boot-admin"
+        details = [
+          "基于 Spring Boot 和 Vue3 的后台管理系统",
+          "包含权限管理、日志监控、性能分析等功能",
+          "支持多租户和插件化架构"
+        ]
+        tech_stack = ["Spring Boot", "Vue3", "MySQL", "Redis"]
+      
+      [[params.about.projects.items]]
+        name = "Cloud Native Platform"
+        subtitle = "云原生应用平台"
+        link = "https://github.com/sullivan980/cloud-platform"
+        details = [
+          "基于 Kubernetes 的云原生应用平台",
+          "支持应用自动部署、扩缩容",
+          "内置监控告警和日志分析"
+        ]
+        tech_stack = ["Kubernetes", "Docker", "Prometheus", "Go"]
