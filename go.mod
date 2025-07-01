@@ -1,4 +1,4 @@
-module github.com/sullivan/Sullivan-blog
+module github.com/sullivan980/sullivan980.github.io
 
 go 1.24.3
 
