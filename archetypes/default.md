@@ -7,6 +7,9 @@ author: "Sullivan"
 tags: []
 categories: []
 description: ""
+weight:
+math: false      # 是否启用数学公式渲染
+diagram: false   # 是否启用Mermaid图表
 
 # 封面配置
 cover:
@@ -35,6 +38,5 @@ ShowPostNavLinks: true
 ShowWordCount: true
 ShowRssButtonInSectionTermList: true
 UseHugoToc: true
----
 
-## 简介
+---
